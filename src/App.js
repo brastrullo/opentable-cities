@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react'
+import './App.css'
+import initData from './initData.json'
+import SearchBar from './components/SearchBar'
+import RestaurantList from './components/RestaurantList'
 
-function App() {
+function App () {
+  const [data, setData] = useState(initData)
+  const [cities, setCities] = useState(null)
+  useEffect(() => { if (data !== null) console.log('RESTAURANTS: ', data) }, [data])
+  useEffect(() => { if (cities !== null) console.log('CITIES: ', cities) }, [cities])
+  useEffect(() => {
+    const fetchCities = async () => {
+      const data = await fetch('https://opentable.herokuapp.com/api/cities')
+        .then(res => res.json())
+      setCities(data)
+    }
+    fetchCities()
+  }, [])
+
+  const setRestaurantData = (res) => setData(res)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <h1 className='header-title'>Let's go to a restaurant in...</h1>
+      <SearchBar setRestaurantData={setRestaurantData} cities={cities} />
+      <RestaurantList data={data} />
+    </>
+  )
 }
 
-export default App;
+export default App
