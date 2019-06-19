@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import './App.css'
-import initData from './initData.json'
+// import initData from './initData.json'
 import SearchBar from './components/SearchBar'
 import RestaurantList from './components/RestaurantList'
 
 function App () {
-  const [data, setData] = useState(initData)
+  const [data, setData] = useState(null)
   const [cities, setCities] = useState(null)
   useEffect(() => { if (data !== null) console.log('RESTAURANTS: ', data) }, [data])
   useEffect(() => { if (cities !== null) console.log('CITIES: ', cities) }, [cities])
