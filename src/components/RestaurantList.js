@@ -4,18 +4,16 @@ import RestaurantItem from './RestaurantItem'
 function RestaurantList (props) {
   const { data } = props
   const RestaurantItemsList = () => {
+    console.log(data)
     if (!data) return <></>
     const { restaurants } = data
-    console.log(data)
-    const list = restaurants.length !== 0
+    const list = restaurants && restaurants.length !== 0
       ? restaurants.map((item, i) => <RestaurantItem key={i} item={item} />)
-      : <span>No results found.</span>
+      : <li>No results found.</li>
     return (
-      <>
-        <ul className='restaurant-list'>
-          {list}
-        </ul>
-      </>
+      <ul className='restaurant-list'>
+        {list}
+      </ul>
     )
   }
   return <RestaurantItemsList />

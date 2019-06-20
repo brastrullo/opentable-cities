@@ -5,7 +5,13 @@
 
 .header-title {
   margin: 1rem;
+  display: flex;
+  justify-content: space-between;
   color: rgb(55, 55, 55);
+}
+
+.header-title span {
+  color: rgb(10, 202, 141);
 }
 
 .searchbar {
@@ -27,7 +33,10 @@
   padding: .1rem .5rem;
 }
 .searchbar button {
+  border:none;
+  border: 1px solid lightgray;
   border-left: none;
+  width: 7.5rem;
   height: 2rem;
   font-size: 1rem;
   background: rgb(10, 202, 141);
@@ -39,11 +48,12 @@
   background: white;
   list-style-type: none;
   padding-left: 0;
+  margin: 1rem;
 }
 
 .restaurant-item {
   background: rgb(236, 236, 236);
-  margin: 1rem;
+  margin: 1rem 0;
   padding: 1rem;
   display: flex;
   flex-flow: row nowrap;
@@ -66,6 +76,34 @@
 .restaurant-price {
   color: rgb(10, 202, 141);
   font-size: 2rem;
+}
+
+.pagination {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 1.2rem;
+  padding: 0;
+}
+
+.pagination li {
+  list-style-type: none;
+  background: lightgray;
+  text-align: center;
+  color: white;
+  font-size: 1.2rem;
+  height: 1.5rem;
+  width: 1.5rem;
+  padding: .2rem;
+}
+
+.pagination li + li {
+  margin-left: .5rem;
+}
+
+.pagination li.current {
+  background: rgb(10, 202, 141);
 }
 
 
